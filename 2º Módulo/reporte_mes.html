@@ -1,0 +1,138 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+
+   <!-- Fullcalendar -->
+   <link rel="stylesheet" type="text/css" href="stylesheets/fullcalendar.css">
+   <link rel="stylesheet" type="text/css" href="stylesheets/fullcalendar.print.css" media="print">
+   <script type="text/javascript" src="javascripts/jquery-1.8.1.min.js"></script>
+   <script type="text/javascript" src="javascripts/jquery-ui-1.8.23.custom.min.js"></script>
+   <script type="text/javascript" src="javascripts/fullcalendar.min.js"></script>
+   <script type="text/javascript" src="javascripts/gcal.js"></script>
+   <script type="text/javascript">
+    $(document).ready(function() {
+        var now = new Date();
+    		$('#calendar').fullCalendar({
+    			editable: true,
+    			events: [
+    				{
+    					title: 'Pago atrasado',
+    					start: new Date(2012, now.getMonth(), 1),
+              color: 'orange'
+    				},
+    				{
+    					title: 'Celebración del día de muertos',
+    					start: new Date(2012, now.getMonth(), 2)
+    				},
+    				{
+    					title: 'Posada de la estancia',
+    					start: new Date(2012, now.getMonth(), 26),
+    					end: new Date(2012, now.getMonth(), 27)
+    				},
+    				{
+    					title: 'Su hijo mordio a un compañero',
+    					start: new Date(2012, now.getMonth(), 16, 10, 30),
+    					allDay: false,
+              color: 'red'
+    				}
+    			]
+    		});
+    	});
+  </script>
+  <style type="text/css">
+
+    body {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    }
+
+    #loading {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    #calendar {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+  </style>
+</head>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+    	<div class="twelve columns">
+			<div id="logo"></div>
+		</div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="#">M&oacute;dulo 3</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 5</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div id="calendar" class="fc">
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+
+  <!---Modal-->
+  <div id="comida" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Descripci&oacute;n nutrimental<h2>
+    <p class="lead">Desayuno.</p>
+    <p>Bla bla bla</p>
+    <p class="lead">Comida.</p>
+    <p>Bla bla bla</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+</body>
+</html>

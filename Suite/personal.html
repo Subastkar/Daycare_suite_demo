@@ -1,0 +1,117 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function writeBio() {
+      var worker = document.comment_form.worker.value;
+      var string = '';
+      var pic = '';
+
+      switch(worker){
+        case '1':
+          string = ' <h5>Datos personales</h5> <p> <b>Direcci&oacute;n:</b> Bahia Banderas #57<br /> <b>Colonia:</b> Villa de Bugambilias<br/> <b>Correo electr&oacute;nico:</b> martin_campo@hotmail.com<br /> <b>Tel&eacute;fono:</b> 312-10-3-45-67</p> <br /> <br /> <h5>Datos acad&eacute;micos</h5> <p> <b>Estudios de primaria:</b> Escuela Josefa Ortiz (1990-1996).<br /> <b>Estudios de secundaria:</b> Colegio Josefna Ch&aacute;vez(1996-1999).<br /> <b>Estudios de preparatoria:</b> Colegio Josefna Ch&aacute;vez(1999-2002).<br /> <b>Estudios superiores:</b> Universidad de la costa (2002-2006).<br /> Licenciatura en pedagog&iacute;a</p> <br /> <br /> <h5>Datos profesionales</h5> <p> <b>Trabajos anteriores:</b><br /> Escuela primaria Jos&eacute; Vasconcelos (2007-2009)<br /> Guarder&iacute;a Solesitos (2009-2012)<br /><br /> <b>Reconocimientos:</b><br /> Diplomado en cuidado de lactantes.<br /> Diplomado en cuidado de ni&ntilde;os con discapacidades.</p>';
+          pic = '<br /><br /><img src="images/teacher1.jpg" />';
+          break;
+        case '2':
+          string = ' <h5>Datos personales</h5> <p> <b>Direcci&oacute;n:</b> Palmas #152<br /> <b>Colonia:</b> Las palmas<br/> <b>Correo electr&oacute;nico:</b> antonio_rg@hotmail.com<br /> <b>Tel&eacute;fono:</b> 312-12-5-29-37</p> <br /> <br /> <h5>Datos acad&eacute;micos</h5> <p> <b>Estudios de primaria:</b> Escuela 20 de Noviembre(1995-2001).<br /> <b>Estudios de secundaria:</b> Escuela 20 de Novimbre(2001-2004).<br /> <b>Estudios de preparatoria:</b> Escuela Juan de la Barrera(2004-2007).<br /> <b>Estudios superiores:</b> Universidad de colima(2007-2011).<br /> Licenciatura en educaci&oacute;n primaria</p> <br /> <br /> <h5>Datos profesionales</h5> <p> <b>Trabajos anteriores:</b><br /> Guarder&iacute;a Solesitos (2011-2012)<br /><br />';
+          pic = '<br /><br /><img src="images/teacher2.jpg" />';
+          break;
+        case '3':
+          string = ' <h5>Datos personales</h5> <p> <b>Direcci&oacute;n:</b> Avenida Pelicano#12<br /> <b>Colonia:</b> soleares<br/> <b>Correo electr&oacute;nico:</b> flor_hernandez@hotmail.com<br /> <b>Tel&eacute;fono:</b> 314-12-3-44-27</p> <br /> <br /> <h5>Datos acad&eacute;micos</h5> <p> <b>Estudios de primaria:</b> Colegio Monte Corona(1989-1994).<br /> <b>Estudios de secundaria:</b> Colegio Monte Corona(1994-1997).<br /> <b>Estudios de secundaria:</b> Colegio St. Johns(1997-2000).<br /> <b>Estudios superiores:</b> Escuela Normal de Maestros(2000-2004).<br /> Licenciatura en pedagog&iacute;a</p> <br /> <br /> <h5>Datos profesionales</h5> <p> <b>Trabajos anteriores:</b><br /> Guarder&iacute;a Solesitos (2005-2012)<br /><br />';
+          pic = '<br /><br /><img src="images/teacher3.jpg" />';
+          break;
+      }
+      
+      document.getElementById('messages').innerHTML = string;
+      document.getElementById('pic').innerHTML = pic;
+    }
+
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+    <div class="eight columns">
+      <div id="logo"></div>
+    </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal.html">Conoce a nuestro personal</a></li>
+              <li class="two columns"><a href="video.html">Video vigilancia</a></li>
+              <li class="column"><a href="cuenta.html">Estado de cuenta</a></li>
+              <li class="two columns"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Conoce al personal que atiende a tu peque&ntilde;o</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="eight columns">
+          <form name="comment_form">
+            <p>Seleccione el nombre del maestro o trabajador que le interesa conocer m&aacute;s:</p>
+            <select name="worker" onChange="writeBio()">
+              <option value="0">Seleccionar empleado...</option>
+              <option value="1">Jose Martin del Campo</option>
+              <option value="2">Antonio Rodriguez Garcia</option>
+              <option value="3">Flor Anais Lopez H&eacute;rnandez</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="eight columns" id="messages">
+        </div>
+        <div class="four columns" id="pic">
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+
+</body>
+</html>

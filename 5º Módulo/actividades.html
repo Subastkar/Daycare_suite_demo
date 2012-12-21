@@ -1,0 +1,538 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+
+    function writeComment() {
+      var comment = document.comment_form.comment.value;
+      var day = document.comment_form.day.value;
+
+      if(day == "general")
+        var string = "Comenario en general."; 
+      else
+        var string = "Comenario sobre el día " + day + "."; 
+
+      var new_comment = document.createElement("div");
+      new_comment.innerHTML = string + "<br />" + comment + "<hr>";
+      document.getElementById('comments').appendChild(new_comment);
+    }
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+    	<div class="twelve columns">
+			<div id="logo"></div>
+		</div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal.html">Conoce a nuestro personal</a></li>
+              <li class="two columns"><a href="video.html">Video vigilancia</a></li>
+              <li class="two columns"><a href="cuenta.html">Estado de cuenta</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class="nine columns">
+          <h5>Aqui encontraras las actividades que se tiene planeadas para tu hijo</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="two columns">
+          <h6>Hora</h6>
+        </div>
+        <div class="two columns">
+          <h6>Lunes</h6>
+        </div>
+        <div class="two columns">
+          <h6>Martes</h6>
+        </div>
+        <div class="two columns">
+          <h6>Mi&eacute;rcoles</h6>
+        </div>
+        <div class="two columns">
+          <h6>Jueves</h6>
+        </div>
+        <div class="two columns">
+          <h6>Viernes</h6>
+        </div>
+      </div>
+      <div class="row gray">
+        <div class="two columns">
+          <p><b>8:00 - 9:00 </b></p>
+        </div>
+        <div class="two columns">
+          <p>Desayuno<br />
+          <a href="#" id="desayuno1Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Desayuno<br />
+          <a href="#" id="desayuno2Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Desayuno<br />
+          <a href="#" id="desayuno3Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Desayuno<br />
+          <a href="#" id="desayuno4Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Desayuno<br />
+          <a href="#" id="desayuno5Modal">Ver men&uacute;</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="two columns">
+          <p><b>9:00 - 10:00 </b></p>
+        </div>
+        <div class="two columns">
+          <p>Higiene y juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Higiene y juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Higiene y juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Higiene y juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Higiene y juego libre</p>
+        </div>
+      </div>
+      <div class="row gray">
+        <div class="two columns">
+          <p><b>10:00 - 11:00 </b></p>
+          <p><b>11:00 - 12:00 </b></p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Dibujo</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Plastilina</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Clase de m&uacute;sica</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Baile y relajaci&oacute;n</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Clase de ingl&eacute;s</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="two columns">
+          <p><b>12:00 - 1:00 </b></p>
+        </div>
+        <div class="two columns">
+          <p>Comida<br />
+          <a href="#" id="comida1Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Comida<br />
+          <a href="#" id="comida2Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Comida<br />
+          <a href="#" id="comida3Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Comida<br />
+          <a href="#" id="comida4Modal">Ver men&uacute;</a></p>
+        </div>
+        <div class="two columns">
+          <p>Comida<br />
+          <a href="#" id="comida5Modal">Ver men&uacute;</a></p>
+        </div>
+      </div>
+      <div class="row gray">
+        <div class="two columns">
+          <p><b>1:00 - 2:00 </b></p>
+          <p><b>2:00 - 3:00 </b></p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Siesta</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Siesta</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Siesta</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Siesta</p>
+        </div>
+        <div class="two columns">
+          <br />
+          <p>Siesta</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="two columns">
+          <p><b>3:00 - 4:00 </b></p>
+        </div>
+        <div class="two columns">
+          <p>Juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Pel&iacute;cula<p>
+        </div>
+        <div class="two columns">
+          <p>Juego libre</p>
+        </div>
+        <div class="two columns">
+          <p>Pel&iacute;cula</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h5>Deje su comentario</h5>
+      <form name="comment_form">
+        Elija el día o si es un comentario en general:
+        <select name="day">
+          <option value="general">Genereal</option>
+          <option value="lunes">Lunes</option>
+          <option value="martes">Martes</option>
+          <option value="miercoles">Mi&eacute;rcoles</option>
+          <option value="jueves">Jueves</option>
+          <option value="viernes">Viernes</option>
+        </select>
+        <textarea name="comment"></textarea>
+        <input type="button" value="Agregar comentario" onClick="writeComment()" />
+      </form>
+      <ul class="accordion">
+        <li>
+        <div class="title">
+          <h4 class="subheader">Comentarios:</h4>
+        </div>
+        <div class="content">
+          <div id="comments">
+          </div>
+        </div>
+        </li>
+      </ul>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+
+  <div id="comida1" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="comida2" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="comida3" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="comida4" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="comida5" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="desayuno1" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="desayuno2" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="desayuno3" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="desayuno4" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="desayuno5" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Men&uacute;<h2>
+    <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+</body>
+</html>

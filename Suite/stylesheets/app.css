@@ -1,0 +1,98 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+body{
+	background: #F3F3F3; 
+}
+
+header{
+	background: #F3F3F3 repeat-x;
+	height: 101px;
+	padding-top: 10px;
+}
+
+footer{
+	background: #2D3236;
+	min-height: 150px;
+	margin-top:20px;
+}
+
+#azul-mitad{
+	background: url(../images/fondo1.jpg);
+	height: 90px;
+}
+
+#logo{
+	background: url(../images/logo.png);
+	height: 64px;
+	width: 300px;
+}
+
+#monos{
+	background: url(../images/monos.png);
+	height: 135px;
+	width: 316px;
+}
+
+#main{
+	color: #404041;
+	padding-top: 10px;
+	text-align:justify;
+	line-height: 1.4em;
+	font-size: 13px;
+  min-height: 291px;
+}
+
+nav>ul li{
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+nav>ul li a{
+	color: white;
+}
+
+nav>ul li a:hover{
+	color: #E5E5E5;
+}
+
+.titulo1{
+	font-weight: bold;
+	color:#FFF;
+    font-size: 28px;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17);
+    margin: 130px 0px 0px 10px;
+    opacity: 0.99;
+    text-align:center;
+}
+
+.text1 {
+    font-family: Palatino,"Times New Roman",Times,serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 400;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    margin: 15px 0px 0px 10px;
+    opacity: 0.99;
+}
+
+.gray{
+  background: gray;
+  color: white;
+}
