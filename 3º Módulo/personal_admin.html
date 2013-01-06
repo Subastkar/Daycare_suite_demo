@@ -25,16 +25,23 @@
   <script src="javascripts/app.js"></script>
   
   <script>
-      function addJob(){
+    $(document).ready(function(){
+      $('#addJob').click(function(){
         var empresa = document.datos.empresa.value;
         var puesto = document.datos.puesto.value;
         var inicio = document.datos.trabajo_a.value;
         var fin = document.datos.trabajo_b.value;
 
         if(empresa != '' && puesto != '' && inicio != '' && fin != ''){
-          var job = document.createElement('div');
-          job.innerHTML = puesto + ' en ' + empresa + ' (' + inicio + '-' + fin + ').';
-          document.getElementById('trabajo').appendChild(job);
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var job ="<div>";
+            job+= puesto + ' en ' + empresa + ' (' + inicio + '-' + fin + ').<br />' + boton;
+          job+="</div>";
+          $('#trabajo').append(job);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
 
           document.datos.empresa.value = '';
           document.datos.puesto.value = '';
@@ -43,30 +50,30 @@
           } else {
           alert('Es necesario llenar todos los campos.');
         }
-      }
+      });
 
-      function addRecon(){
+      $('#addRecon').click(function(){
         var nombre = document.datos.reconocimiento.value;
         var ano = document.datos.ano.value;
 
         if(nombre != '' && ano != ''){
-          var recon = document.createElement('div');
-          recon.innerHTML = nombre + ' (' + ano + ').';
-          document.getElementById('reconocimientos').appendChild(recon);
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var recon ="<div>";
+          recon+= nombre + ' (' + ano + ').<br />' + boton;
+          recon+="</div>";
+          $('#reconocimientos').append(recon);
 
-          document.datos.curso.value = '';
-          document.datos.curso_a.value = '';
-          document.datos.curso_b.value = '';
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.reconocimiento.value = '';
+          document.datos.ano.value = '';
           } else {
           alert('Es necesario llenar todos los campos.');
         }
-      }
+      });
 
-      function deletee(obj){
-        console.log(obj);
-      }
-
-    $(document).ready(function(){
       $("#addCurse").click(function(){
         console.log("hola");
         var nombre = document.datos.curso.value;
@@ -81,7 +88,6 @@
           $("#cursos").append(course);
 
           $(".delete").click(function(){
-            console.log("elimina");
             $(this).parent().remove();
           });
 
@@ -93,9 +99,7 @@
         }
       });
 
-
       $(".delete").click(function(){
-        console.log("elimina");
         $(this).parent().remove();
       });
 
@@ -236,7 +240,7 @@
                 <td>Del: <input type="text" name="trabajo_a"></td><td>Al: <input type="text" name="trabajo_b"></td>
               </tr>
               <tr>
-                <td><input type="button" value="Agregar trabajo" onclick="addJob()"></td>
+                <td><input type="button" value="Agregar trabajo" id="addJob"/></td>
               </tr>
               <tr>
                 <td><label>Reconocimientos</label></td>
@@ -254,7 +258,7 @@
                 <td>Año:</td><td><input type="text" name="ano"></td>
               </tr>
               <tr>
-                <td><input type="button" value="Agregar reconocimiento" onclick="addRecon()"></td>
+                <td><input type="button" value="Agregar reconocimiento" id="addRecon"/></td>
               </tr>
           </form>
         </div>
