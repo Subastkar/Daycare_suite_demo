@@ -1,0 +1,263 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function titleReport(){
+      var name = document.reporte.name.value;
+      document.getElementById('nombre').innerHTML = '<p> Reporte de: <b>' + name + '</b></p>';
+    }
+
+    function completeForm(){
+      var report = document.reporte.report.value;
+      var html = '';
+
+      switch(report){
+        case 'actividad':
+          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
+          break;                                                                                                            
+        case 'comida':                                                                                                      
+          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
+          break;                                                                                                            
+        case 'siestas':                                                                                                     
+          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
+          break;
+        case 'observaciones':
+        html = '<br />Observación:<br /><textarea name="message"></textarea><br />Tipo de observación:<br /><input type="radio" name="tipo" value="bueno">Positiva<br /><input type="radio" name="tipo" value="malo">Negativa<br /><br /><input type="button" value="Agregar al reporte" onclick="save()">';
+          break;
+      }
+
+      document.getElementById('_form').innerHTML= html;
+    }
+
+    function save(){
+      var name = document.reporte.name.value;
+
+      if(name != ''){
+        var report = document.reporte.report.value;
+        var tipo = '';
+        var radio = '';
+
+
+        switch(report){
+          case 'actividad':
+          tipo = '<b>Actividades didácticas:</b></br >';
+          break;
+          case 'comida':
+          tipo = '<b>Comida:</b></br >';
+          break;
+          case 'siestas':
+          tipo = '<b>Siesta:</b></br >';
+          break;
+          case 'observaciones':
+          tipo = '<b>Observaciones:</b></br >';
+          break;
+        }
+
+        if(report == 'observaciones'){
+          radios = document.reporte.tipo
+          for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+              radio = radios[i].value;
+            }
+          }
+        }
+
+        if(report == 'observaciones' && radio == ''){
+          alert('Seleccione el tipo de observación.');
+          }else{
+          var message = document.createElement('div');
+          var m = document.reporte.message.value;
+          message.innerHTML = tipo + m;
+          if(radio != 'bueno')
+          message.class = 'alert-box success';
+          if(radio != 'malo')
+          message.class = 'alert-box alert';
+          document.getElementById('mensaje').appendChild(message);
+          document.getElementById('_form').innerHTML= '';
+          document.getElementById('done').setAttribute("style", "display: true;");
+        }
+        } else {
+        alert('Seleccione a un niño antes porfavor.');
+      }
+    }
+
+    function done(){
+      document.getElementById('done').setAttribute("style", "display: none;");
+      document.getElementById('nombre').innerHTML = '';
+        document.getElementById('mensaje').innerHTML = '';
+    }
+
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Areá de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="#">M&oacute;dulo 2</a></li>
+              <li class="three columns"><a href="#">M&oacute;dulo 3</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 5</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Generar reporte de actividades d&iacute;arias.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>Aquí podrás capturar observaciones y comentarios sobre las actividades diarias de los pequeños.<br /><br />
+          <b>Nota:</b> recuerda que parte de esta información se genera de manera automática.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="seven columns">
+          <form name="reporte">
+            <label>Nombre del niño: </label>
+            <select name="name" onchange="titleReport()">
+              <option value ="">Seleccione el nombre del pequeño...</option>
+              <option value ="Maya Camberos Guttierrez">Maya Camberos Guttierrez</option>
+              <option value ="Flor García Martinez">Flor García Martinez</option>
+              <option value ="Antonio Chávez Valencia">Antonio Chávez Valencia</option>
+              <option value ="Andrea Gonzalez Gonzalez">Andrea Gonzalez Gonzalez</option>
+              <option value ="Estefani Gomez Torres">Estefani Gomez Torres</option>
+              <option value ="Maria Jośe Cordoba Sauce">Maria Jośe Cordoba Sauce</option>
+              <option value ="Elizabeth Enciso Uribe">Elizabeth Enciso Uribe</option>
+              <option value ="Eduardo Ruiz Sánchez">Eduardo Ruiz Sánchez</option>
+              <option value ="Audel Sánchez Mendoza">Audel Sánchez Mendoza</option>
+              <option value ="Pedro Hernandez Barrios">Pedro Hernandez Barrios</option>
+              <option value ="Anahi Arellano Ochoa">Anahi Arellano Ochoa</option>
+              <option value ="Lorena Espina Castro">Lorena Espina Castro</option>
+              <option value ="Raul Mora Zamudio">Raul Mora Zamudio</option>
+              <option value ="Daniel Lopez Lopez">Daniel Lopez Lopez</option>
+              <option value ="Cecilia Aburto Cuevas">Cecilia Aburto Cuevas</option>
+              <option value ="Andrea Rico Castañeda">Andrea Rico Castañeda</option>
+            </select>
+            <br />
+            <br />
+            <label>Categoría: </label>
+            <select name="report" onchange="completeForm()">
+              <option value ="">Seleccione una opción...</option>
+              <option value ="actividad">Actividades didácticas</option>
+              <option value ="comida">Comidas</option>
+              <option value ="siestas">Siestas</option>
+              <option value ="observaciones">Observaciones</option>
+            </select>
+            <div id="_form">
+            </div>
+          </form>
+        </div>
+        <div class="five columns">
+          <div id="nombre">
+          </div>
+          <div id="mensaje">
+          </div>
+          <button id='done' onclick="done()" style="display: none;">Guardar</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+
+  <!---Modal-->
+  <div id="comida" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Descripci&oacute;n nutrimental<h2>
+        <p class="lead">Desayuno.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Sopa de estrellas con verduras:<br />
+            ½ taza de fideo<br />
+            30 gr de chayote<br /> 
+            30 gr de jitomate<br />
+            20 gr de zanahoria<br />
+            1 cucharadita de aceite comestible<br />
+            <br />
+            1 tortilla<br />
+            250 ml de leche entera</p>
+          </td>
+          <td>
+            <p>Kcal totales=347<br />
+            PROTEINAS=14.5 gr<br />
+            HIDRATOS DE CARBONO= 45 gr<br />
+            LIPIDOS = 18 gr</p>
+          </td>
+        </tr>
+      </table>
+    <p class="lead">Comida.</p>
+      <table>
+        <tr>
+          <td>
+            <p>Ensalada de pollo:<br />
+            60 gr de pollo<br />
+            50 gr de papa<br />
+            30 gr de zanahoria<br />
+            30 gr de manzana<br />
+            1 cucharada de crema<br />
+            <br />
+            4 galletas saladas<br />
+            Agua de Jamaica</p>
+          </td>
+          <td>
+            <p>Kcal totales= 300<br />
+            PROTEINAS=18 gr<br />
+            HIDRATOS DE CARBONO=26 gr<br />
+            LIPIDOS=6 gr</p>
+          </td>
+        </tr>
+      </table>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+</body>
+</html>
