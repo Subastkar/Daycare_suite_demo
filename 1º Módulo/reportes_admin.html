@@ -91,10 +91,10 @@
           var message = document.createElement('div');
           var m = document.reporte.message.value;
           message.innerHTML = tipo + m;
-          if(radio != 'bueno')
-          message.class = 'alert-box success';
-          if(radio != 'malo')
-          message.class = 'alert-box alert';
+          if(radio == 'bueno')
+            message.className = 'alert-box success';
+          if(radio == 'malo')
+            message.className = 'alert-box alert';
           document.getElementById('mensaje').appendChild(message);
           document.getElementById('_form').innerHTML= '';
           document.getElementById('done').setAttribute("style", "display: true;");
