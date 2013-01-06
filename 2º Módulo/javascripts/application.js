@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  $("#comidaModal").click(function() {
-    $("#comida").reveal();
-  });
+  //$(".modal").click(function() {
+    //$(this).parent().parent().find(".popup").reveal();
+  //});
   $("#comida1Modal").click(function() {
     $("#comida1").reveal();
   });
