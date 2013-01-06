@@ -180,6 +180,8 @@
           console.log("hora: "+hour+" dia: "+day);
           console.log($(".columna").eq(items[hour][day]).text());
           $(".columna").eq(items[hour][day]).css("background-color",$("#js-color-selected").val());
+          $(".columna").eq(items[hour][day]).text($("#activity").val());
+
         });
 
         $(".color-check").click(function(){
@@ -216,13 +218,13 @@
           <option value="6">2:00 - 3:00</option>
           <option value="7">3:00 - 4:00</option>
         </select>
-        <select name="activity">
-          <option value="0">Seleccione una actividad</option>
-          <option value="1">Siesta</option>
-          <option value="2">Juego libre</option>
-          <option value="3">Clase</option>
-          <option value="4">Comida</option>
-          <option value="5">Higiene</option>
+        <select name="activitys" id="activity">
+          <option value="">Seleccione una actividad</option>
+          <option value="Siesta">Siesta</option>
+          <option value="Juego libre">Juego libre</option>
+          <option value="Clase">Clase</option>
+          <option value="Comida">Comida</option>
+          <option value="Higiene">Higiene</option>
         </select>
 
         <div id="actividad">
@@ -240,7 +242,7 @@
         <div id="clase">
           Especifique un nombre para la clase:
           <br />
-          <input type="text" name="nombre-de-clase" />
+          <input type="text" id="js-nombre-de-clase" />
         </div>
 
         <input type="button" value="Agregar actividad" id="agregaActividad"/>
