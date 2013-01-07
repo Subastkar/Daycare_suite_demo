@@ -25,29 +25,12 @@
   <script src="javascripts/app.js"></script>
   
   <script>
-    function titleReport(){
-      var name = document.reporte.name.value;
-      document.getElementById('nombre').innerHTML = '<p> Reporte de: <b>' + name + '</b></p>';
-    }
-
     function completeForm(){
-      var report = document.reporte.report.value;
+      var report = document.reporte.name.value;
       var html = '';
 
-      switch(report){
-        case 'actividad':
-          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
-          break;                                                                                                            
-        case 'comida':                                                                                                      
-          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
-          break;                                                                                                            
-        case 'siestas':                                                                                                     
-          html = '<br />Reporte:<br /><textarea name="message"></textarea><br /><input type="button" value="Agregar al reporte" onclick="save()">';
-          break;
-        case 'observaciones':
-        html = '<br />Observación:<br /><textarea name="message"></textarea><br />Tipo de observación:<br /><input type="radio" name="tipo" value="bueno">Positiva<br /><input type="radio" name="tipo" value="malo">Negativa<br /><br /><input type="button" value="Agregar al reporte" onclick="save()">';
-          break;
-      }
+      if(report != '')
+      html = '<br />Mensaje:<br /><textarea name="message"></textarea><br />Tipo de observación:<br /><input type="radio" name="tipo" value="bueno">Positiva<br /><input type="radio" name="tipo" value="malo">Negativa<br /><br /><input type="button" value="Agregar mensaje de cobro" onclick="save()">';
 
       document.getElementById('_form').innerHTML= html;
     }
@@ -56,64 +39,33 @@
       var name = document.reporte.name.value;
 
       if(name != ''){
-        var report = document.reporte.report.value;
         var tipo = '';
         var radio = '';
 
-        if(report != ''){
-          switch(report){
-            case 'actividad':
-            tipo = '<b>Actividades didácticas:</b></br >';
-            break;
-            case 'comida':
-            tipo = '<b>Comida:</b></br >';
-            break;
-            case 'siestas':
-            tipo = '<b>Siesta:</b></br >';
-            break;
-            case 'observaciones':
-            tipo = '<b>Observaciones:</b></br >';
-            break;
+        radios = document.reporte.tipo
+        for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked) {
+            radio = radios[i].value;
           }
-
-          if(report == 'observaciones'){
-            radios = document.reporte.tipo
-            for (var i = 0, length = radios.length; i < length; i++) {
-              if (radios[i].checked) {
-                radio = radios[i].value;
-              }
-            }
-          }
-
-          if(report == 'observaciones' && radio == ''){
-            alert('Seleccione el tipo de observación.');
-            }else{
-            var message = document.createElement('div');
-            var m = document.reporte.message.value;
-            message.innerHTML = tipo + m;
-            if(radio == 'bueno')
-            message.className = 'alert-box success';
-            if(radio == 'malo')
-            message.className = 'alert-box alert';
-            document.getElementById('mensaje').appendChild(message);
-            document.getElementById('_form').innerHTML= '';
-            document.getElementById('done').setAttribute("style", "display: true;");
-            document.reporte.report.selectedIndex = "";
-          }
-          } else {
-          alert('Introduzca un mensaje.');
         }
+
+        var message = document.createElement('div');
+        var m = document.reporte.message.value;
+        message.innerHTML = tipo + m;
+        if(radio == 'bueno')
+        message.className = 'alert-box success';
+        if(radio == 'malo')
+        message.className = 'alert-box alert';
+        if(radio == '')
+        message.className = 'alert-box';
+        document.getElementById('mensaje').appendChild(message);
+        document.getElementById('_form').innerHTML= '';
+        document.reporte.name.selectedIndex = "";
+        alert('La información ha sido guardada correctamente.');
+        document.getElementById('mensaje').innerHTML = '';
         } else {
         alert('Seleccione a un niño antes porfavor.');
       }
-    }
-
-    function done(){
-      alert('La información ha sido guardada correctamente.');
-      document.getElementById('done').setAttribute("style", "display: none;");
-      document.getElementById('nombre').innerHTML = '';
-      document.getElementById('mensaje').innerHTML = '';
-      document.reporte.name.selectedIndex = "";
     }
 
     $(window).load(function(){
@@ -170,7 +122,7 @@
         <div class="seven columns">
           <form name="reporte">
             <label>Nombre del niño: </label>
-            <select name="name" onchange="titleReport()">
+            <select name="name" onchange="completeForm()">
               <option value ="">Seleccione el nombre del pequeño...</option>
               <option value ="Maya Camberos Guttierrez">Maya Camberos Guttierrez</option>
               <option value ="Flor García Martinez">Flor García Martinez</option>
@@ -191,24 +143,13 @@
             </select>
             <br />
             <br />
-            <label>Categoría: </label>
-            <select name="report" onchange="completeForm()">
-              <option value ="">Seleccione una opción...</option>
-              <option value ="actividad">Actividades didácticas</option>
-              <option value ="comida">Comidas</option>
-              <option value ="siestas">Siestas</option>
-              <option value ="observaciones">Observaciones</option>
-            </select>
             <div id="_form">
             </div>
           </form>
         </div>
         <div class="five columns">
-          <div id="nombre">
-          </div>
           <div id="mensaje">
           </div>
-          <button id='done' onclick="done()" style="display: none;">Guardar</button>
         </div>
       </div>
     </div>
