@@ -1,0 +1,148 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <style type="text/css">
+    .sala{width:170px;height:185px;padding:10px;border:1px solid #aaaaaa;}
+    .cam{width:150px;height:150px;padding:10px;border:1px solid #aaaaaa;}
+  </style>
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function createDiv(){
+      var name = document.sala.nombre.value;
+
+      if(name != ''){
+        var div = '<div class="sala" ondrop="drop(event)" ondragover="allowDrop(event)">' + name + '</div><br /><br />';
+        $('#salas').append(div);
+        document.sala.nombre.value = '';
+        }else{
+        alert('Específica un nombre.');
+      }
+    }
+
+    function allowDrop(ev)
+    {
+      ev.preventDefault();
+    }
+
+    function drag(ev)
+    {
+      ev.dataTransfer.setData("Text",ev.target.id);
+    }
+
+    function drop(ev)
+    {
+      ev.preventDefault();
+      var data=ev.dataTransfer.getData("Text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Área de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades_admin.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal_admin.html">Alta de currículums</a></li>
+              <li class="two columns"><a href="video_admin.html">Control de videos</a></li>
+              <li class="two columns"><a href="cuenta_admin.html">Estados de cuenta</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Gestión de salas y cámaras.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>Aquí podrás gestionar el número de salas y el acceso de las cámaras a estas salas.<br /><br />
+          <b>Nota:</b> Para arrastrar la cámara haz click en el nombre y arrastra hasta la sala que desees.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="five columns">
+          <h5>Cámaras</h5>
+          <div id="cam_1" class="alert-box cam" draggable="true" ondragstart="drag(event)">
+            <b>Cámara 1</b><br />
+            <img src="images/cam.gif">
+          </div>
+          <div id="cam_1" class="alert-box cam" draggable="true" ondragstart="drag(event)">
+            <b>Cámara 2</b><br />
+            <img src="images/cam.gif">
+          </div>
+          <div id="cam_1" class="alert-box cam" draggable="true" ondragstart="drag(event)">
+            <b>Cámara 3</b><br />
+            <img src="images/cam.gif">
+          </div>
+          <div id="cam_1" class="alert-box cam" draggable="true" ondragstart="drag(event)">
+            <b>Cámara 4</b><br />
+            <img src="images/cam.gif">
+          </div>
+        </div>
+        <div class="five columns">
+          <h5>Salas</h5>
+          <div id="salas">
+          </div>
+        </div>
+        <div class="two columns">
+          <form name="sala">
+            <label>Nueva sala:</label>
+            <input type="text" name="nombre"/>
+            <input type="button" onclick="createDiv()" value="Agregar sala"/>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+</body>
+</html>
