@@ -1,0 +1,155 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function createAcc(){
+      var name = document.datos.nombre.value;
+      var grade = document.datos.grade.value;
+      var dad = document.datos.nombre_p.value;
+      var dadt = document.datos.tel_p.value;
+      var mom = document.datos.nombre_m.value;
+      var momt = document.datos.tel_m.value;
+      var msg = '';
+
+      if(name != ''){
+        var message = document.createElement('div');
+
+        if(momt == '' && dadt == '')
+        msg+='Ingrese el número telefónico del contacto<br />';
+        if(grade == '')
+        msg+='Elija un grado.<br />';
+
+        if(msg != ''){
+          message.className = 'alert-box alert';
+          }else{
+          message.className = 'alert-box success';
+          msg+= 'Cuenta creada.<br />Usuario: padre<br />Contraseña: 12345.';
+          document.datos.grade.selectedIndex = "";
+          document.datos.nombre.value = '';
+          document.datos.nombre_p.value = '';
+          document.datos.tel_p.value = '';
+          document.datos.nombre_m.value = '';
+          document.datos.tel_m.value = '';
+        }
+
+        message.innerHTML = msg;
+        document.getElementById('mensaje').appendChild(message);
+
+        }else{
+        alert('Ingrese el nombre del niño.');
+      }
+    }
+
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Areá de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades_admin.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal_admin.html">Alta de currículums</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="cuenta_admin.html">Estados de cuenta</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Alta de cuenta.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>Aquí podrás crear nuevas cuentas para los padres capturarando la información básica del pequeño..<br />
+          A demás en el siguiente panel podras mandar avisos peronales, si es necesario.</p>
+          <a href="#" style="margin-left: 15px;">Captura de nueva cuenta</a>
+          <a href="cuenta2_admin.html" style="margin-left: 15px;">Mensajes a estado de cuenta</a>
+          <br /><br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="seven columns">
+          <form name="datos">
+            <label>Nombre del niño: </label>
+            <input type="text" name="nombre"/>
+            <label>Grado: </label>
+            <select name="grade">
+              <option value ="">Seleccione una opción...</option>
+              <option value ="1">Primer grado</option>
+              <option value ="2">Segundo grado</option>
+              <option value ="3">Tercer grado</option>
+              <option value ="4">Cuarto grado</option>
+            </select>
+            <br />
+            <br />
+            <label><b>Nota:</b> recuerde incluir al menos el número de uno de los padres.</label>
+            <label>Nombre del padre: </label>
+            <input type="text" name="nombre_p"/>
+            <label>Telefono: </label>
+            <input type="text" name="tel_p"/>
+            <label>Nombre de la madre: </label>
+            <input type="text" name="nombre_m"/>
+            <label>Telefono: </label>
+            <input type="text" name="tel_m"/>
+            <input type="button" value="Crear cuenta" onclick="createAcc()"/>
+          </form>
+        </div>
+        <div class="five columns">
+          <div id="mensaje">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+</body>
+</html>
