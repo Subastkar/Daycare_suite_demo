@@ -1,0 +1,199 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function saveCV(){
+      alert('Datos salvados correctamente.');
+      window.location.reload();
+    }
+
+    $(document).ready(function(){
+      $('#addJob').click(function(){
+        var empresa = document.datos.empresa.value;
+        var puesto = document.datos.puesto.value;
+        var inicio = document.datos.trabajo_a.value;
+        var fin = document.datos.trabajo_b.value;
+
+        if(empresa != '' && puesto != '' && inicio != '' && fin != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var job ="<div>";
+            job+= puesto + ' en ' + empresa + ' (' + inicio + '-' + fin + ').<br />' + boton;
+          job+="</div>";
+          $('#trabajo').append(job);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.empresa.value = '';
+          document.datos.puesto.value = '';
+          document.datos.trabajo_a.value = '';
+          document.datos.trabajo_b.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $('#addRecon').click(function(){
+        var nombre = document.datos.reconocimiento.value;
+        var ano = document.datos.ano.value;
+
+        if(nombre != '' && ano != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var recon ="<div>";
+          recon+= nombre + ' (' + ano + ').<br />' + boton;
+          recon+="</div>";
+          $('#reconocimientos').append(recon);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.reconocimiento.value = '';
+          document.datos.ano.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $(".delete").click(function(){
+        $(this).parent().remove();
+      });
+
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Areá de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades_admin.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal_admin.html">Alta de currículums</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 5</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Creación de currículums.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>En este apartado se tiene como finalidad crear brindar información sobre nuestro personal.</p>
+          <a href="personal_admin.html" style="margin-left: 15px;"> Datos personales</a>
+          <a href="personal2_admin.htm#" style="margin-left: 15px;"> Datos academicos</a>
+          <a href="#" style="margin-left: 15px;"> Datos laborales</a>
+          <br />
+          <br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="eight columns">
+          <form name="datos">
+            <table>
+              <tr>
+                <td><label><h5>Datos profesionales:</h5></label></td>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+              </tr>
+              <tr>
+                <td><label>Trabajos anteriores</label></td>
+              </tr>
+              <tr>
+                <td colspan="15">
+                  <div id="trabajo">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Empresa:</td><td colspan="14"><input type="text" name="empresa"></td>
+              </tr>
+              <tr>
+                <td>Puesto:</td><td colspan="14"><input type="text" name="puesto"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="trabajo_a"></td><td>Al: <input type="text" name="trabajo_b"></td>
+              </tr>
+              <tr>
+                <td><input type="button" value="Agregar trabajo" id="addJob"/></td>
+              </tr>
+              <tr>
+                <td><label>Reconocimientos</label></td>
+              </tr>
+              <tr>
+                <td colspan="15">
+                  <div id="reconocimientos">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Reconocimiento:</td><td colspan="14"><input type="text" name="reconocimiento"></td>
+              </tr>
+              <tr>
+                <td>Año:</td><td><input type="text" name="ano"></td>
+              </tr>
+              <tr>
+                <td><input type="button" value="Agregar reconocimiento" id="addRecon"/></td>
+              </tr>
+            </table>
+            <input type="button" value="Guardar curriculum" onclick="saveCV()"/>
+          </form>
+        </div>
+        <div class="four columns">
+          <div id="message">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+</body>
+</html>

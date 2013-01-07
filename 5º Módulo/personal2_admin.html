@@ -1,0 +1,198 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function saveCV(){
+      var primaria = document.datos.primaria.value;
+      var secundaria = document.datos.secundaria.value;
+      var preparatoria = document.datos.preparatoria.value;
+      var msg = '';
+
+      if(primaria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de primaria.<br />';
+      if(secundaria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de secundaria.<br />';
+      if(preparatoria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de preparatoria.<br />';
+
+      if(msg == ''){
+        alert('Datos salvados correctamente.');
+        window.location.reload();
+        } else {
+        var div = document.createElement('div');
+        div.className = 'alert-box alert';
+        div.innerHTML = msg;
+        $('#message').append(div);
+      }
+    }
+
+    $(document).ready(function(){
+      $("#addCurse").click(function(){
+        console.log("hola");
+        var nombre = document.datos.curso.value;
+        var inicio = document.datos.curso_a.value;
+        var fin = document.datos.curso_b.value;
+
+        if(nombre != '' && inicio != '' && fin != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var course ="<div>";
+          course+= nombre + ' (' + inicio + '-' + fin + ')<br />'+boton;
+          course+="</div>";
+          $("#cursos").append(course);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.curso.value = '';
+          document.datos.curso_a.value = '';
+          document.datos.curso_b.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $(".delete").click(function(){
+        $(this).parent().remove();
+      });
+
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Areá de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades_admin.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal_admin.html">Alta de currículums</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 5</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Creación de currículums.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>En este apartado se tiene como finalidad crear brindar información sobre nuestro personal.</p>
+          <a href="personal_admin.html" style="margin-left: 15px;"> Datos personales</a>
+          <a href="#" style="margin-left: 15px;"> Datos academicos</a>
+          <a href="personal3_admin.html" style="margin-left: 15px;"> Datos laborales</a>
+          <br />
+          <br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="eight columns">
+          <form name="datos">
+            <table>
+              <tr>
+                <td><label><h5>Datos académicos:</h5></label></td>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+              </tr>
+              <tr>
+                <td>Estudios de primaria:</td><td colspan="14"><input type="text" name="primaria"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="primaria_a"></td><td>Al: <input type="text" name="primaria_b"></td>
+              </tr>
+              <tr>
+                <td>Estudios de secundaria:</td><td colspan="14"><input type="text" name="secundaria"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="secundaria_a"></td><td>Al: <input type="text" name="secundaria_b"></td>
+              </tr>
+              <tr>
+                <td>Estudios de preparatoria:</td><td colspan="14"><input type="text" name="preparatoria"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="preparatoria_a"></td><td>Al: <input type="text" name="preparatoria_b"></td>
+              </tr>
+              <tr>
+                <td>Estudios superiores:</td><td colspan="14"><input type="text" name="superiores"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="superiores_a"></td><td>Al: <input type="text" name="superiores_b"></td>
+              </tr>
+              <tr>
+                <td> <label><h5>Cursos adicionales</h5></label></td>
+              </tr>
+              <tr>
+                <td colspan="15">
+                  <div id="cursos">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Nombre del curso:</td><td colspan="14"><input type="text" name="curso"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="curso_a"></td><td>Al: <input type="text" name="curso_b"></td>
+              </tr>
+              <tr>
+                <td><input type="button" value="Agregar curso" id="addCurse"/> </td>
+              </tr>
+            </table>
+            <input type="button" value="Guardar curriculum" onclick="saveCV()"/>
+          </form>
+        </div>
+        <div class="four columns">
+          <div id="message">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+</body>
+</html>

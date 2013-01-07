@@ -1,0 +1,144 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width" />
+  <title>Day Care Soft</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/application.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  
+  <script>
+    function saveCV(){
+      var nombre = document.datos.nombre.value;
+      var apellido = document.datos.apellido.value;
+      var direccion = document.datos.direccion.value;
+      var msg = '';
+
+      if(nombre == '')
+      msg+= 'Es necesario ingresar un nombre.<br />';
+      if(apellido == '')
+      msg+= 'Es necesario ingresar un apellido.<br />';
+      if(direccion == '')
+      msg+= 'Es necesario ingresar una dirección.<br />';
+
+      if(msg == ''){
+        alert('Datos salvados correctamente.');
+        window.location.reload();
+        } else {
+        var div = document.createElement('div');
+        div.className = 'alert-box alert';
+        div.innerHTML = msg;
+        $('#message').append(div);
+      }
+    }
+
+    $(document).ready(function(){
+      $("#featured").orbit();
+    });
+   </script> 
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header class="row">
+      <div class="nine columns">
+        <div id="logo"></div>
+      </div>
+      <div class="three columns">
+        <h3>Areá de administradores</h3>
+      </div>
+    </header>
+    <section id="azul-mitad">
+    	<div class="row">
+    		<div class="twelve columns centered titulo1">
+          <nav>
+            <ul>
+              <li class="two columns"><a href="reportes_admin.html">Reporte diario</a></li>
+              <li class="three columns"><a href="actividades_admin.html">Actividades de la semana</a></li>
+              <li class="three columns"><a href="personal_admin.html">Alta de currículums</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 4</a></li>
+              <li class="two columns"><a href="#">M&oacute;dulo 5</a></li>
+              <li class="column"></li>
+            </ul>
+          </nav>
+    		</div>
+    	</div>
+    </section>
+    
+    <div id="main" role="main">
+      <div class="row">
+        <div class=" nine columns">
+          <h5>Creación de currículums.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <p>En este apartado se tiene como finalidad crear brindar información sobre nuestro personal.</p>
+          <a href="#" style="margin-left: 15px;"> Datos personales</a>
+          <a href="personal2_admin.html" style="margin-left: 15px;"> Datos academicos</a>
+          <a href="personal3_admin.html" style="margin-left: 15px;"> Datos laborales</a>
+          <br />
+          <br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="eight columns">
+          <form name="datos">
+            <table>
+              <tr>
+                <td><label><h5>Datos personales:</h5></label></td>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+              </tr>
+              <tr>
+                <td>Nombre:</td><td colspan="14"><input type="text" name="nombre"></td>
+              </tr>
+              <tr>
+                <td>Apellido:</td><td colspan="14"><input type="text" name="apellido"></td>
+              </tr>
+              <tr>
+                <td>Dirección:</td><td colspan="14"><input type="text" name="direccion"></td>
+              </tr>
+              <tr>
+                <td>Correo electrónico:</td><td colspan="14"><input type="text" name="e-mail"></td>
+              </tr>
+              <tr>
+                <td>Teléfono:</td><td colspan="5"><input type="text" name="telefono"></td>
+              </tr>
+              <tr>
+              </tr>
+            </table>
+            <input type="button" value="Guardar curriculum" onclick="saveCV()"/>
+          </form>
+        </div>
+        <div class="four columns">
+          <div id="message">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class= "eight columns"></div>
+      <div class="four columns" id="monos"></div>
+    </footer>
+  </div> 
+</body>
+</html>
