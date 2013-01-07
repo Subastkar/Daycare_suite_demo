@@ -141,3 +141,18 @@ nav>ul li a:hover{
   height: 30px;
   width: 60px;
 }
+
+.comida{
+  display: none;
+}
+
+.clase{
+  display: none;
+}
+
+#hour{
+  font-size: 18px;
+}
+#activity{
+  font-size: 18px;
+}

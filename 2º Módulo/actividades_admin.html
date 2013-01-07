@@ -175,11 +175,21 @@
         ];
 
         $("#agregaActividad").click(function(){
-          var day = $("#day").val();
+          var days = []
+          $(".day:checked").each(function ()
+          {
+            days.push(parseInt($(this).val()));
+          });
           var hour = $("#hour").val();
-          console.log("hora: "+hour+" dia: "+day);
-          console.log($(".columna").eq(items[hour][day]).text());
-          $(".columna").eq(items[hour][day]).css("background-color",$("#js-color-selected").val());
+          $.each( days, function(i, day){
+            $(".columna").eq(items[hour][day]).css("background-color",$("#js-color-selected").val());
+            if( $("#activity").val() == "Clase" ){
+              $(".columna").eq(items[hour][day]).text( $("#activity").val() + " de " + $("#js-nombre-de-clase").val() );
+            }
+            else{
+              $(".columna").eq(items[hour][day]).text( $("#activity").val() );
+            }
+          });
         });
 
         $(".color-check").click(function(){
@@ -189,22 +199,44 @@
           $("#js-color-selected").val(color);
         });
 
+        $("#activity").change(function(){
+          if( $(this).val() == "Comida"){
+            $(".comida").show();
+            $(".clase").hide();
+          }
+          else if( $(this).val() == "Clase"){
+            $(".clase").show();
+            $(".comida").hide();
+          }
+          else {
+            $(".comida").hide();
+            $(".clase").hide();
+          }
+        });
+
       });
     </script>
 
 
     <div class="row">
-      <h5>Deje su comentario</h5>
+      <table>
+        <tr>
+          <td>Lunes</td>
+          <td>Martes</td>
+          <td>Mi&eacute;rcoles</td>
+          <td>Jueves</td>
+          <td>Viernes</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="day" id="lunes" value="0"/></td>
+          <td><input type="checkbox" class="day" id="martes" value="1"/></td>
+          <td><input type="checkbox" class="day" id="miercoles" value="2"/></td>
+          <td><input type="checkbox" class="day" id="jueves" value="3"/></td>
+          <td><input type="checkbox" class="day" id="viernes" value="4"/></td>
+        </tr>
+      </table>
       <form name="comment_form" >
-        <!--Elija el día o si es un comentario en general:-->
-        <select name="days" id="day" class="six columns">
-          <option value="">Seleccione un dia</option>
-          <option value="0">Lunes</option>
-          <option value="1">Martes</option>
-          <option value="2">Mi&eacute;rcoles</option>
-          <option value="3">Jueves</option>
-          <option value="4">Viernes</option>
-        </select>
+
         <select name="hours" id="hour" class="six columns">
           <option value="">Seleccione un horario</option>
           <option value="0">8:00 - 9:00</option>
@@ -216,32 +248,36 @@
           <option value="6">2:00 - 3:00</option>
           <option value="7">3:00 - 4:00</option>
         </select>
-        <select name="activity">
-          <option value="0">Seleccione una actividad</option>
-          <option value="1">Siesta</option>
-          <option value="2">Juego libre</option>
-          <option value="3">Clase</option>
-          <option value="4">Comida</option>
-          <option value="5">Higiene</option>
+        <select name="activitys" id="activity" class="six columns">
+          <option value="">Seleccione una actividad</option>
+          <option value="Siesta">Siesta</option>
+          <option value="Juego libre">Juego libre</option>
+          <option value="Clase">Clase</option>
+          <option value="Comida">Comida</option>
+          <option value="Higiene">Higiene</option>
         </select>
 
-        <div id="actividad">
-          <div class="color1 color-check"></div>
-          <div class="color2 color-check"></div>
-          <div class="color3 color-check"></div>
-          <div class="color4 color-check"></div>
-          <div class="color5 color-check"></div>
-          <input type="hidden" id="js-color-selected" value="" />
-        </div>
-        <div id="comida">
-          <input type="radio" value="desayuno" name="group1" class="group1"/>
-          <input type="radio" value="comida" name="group1" class="group1"/>
-        </div>
-        <div id="clase">
-          Especifique un nombre para la clase:
-          <br />
-          <input type="text" name="nombre-de-clase" />
-        </div>
+
+        <table class="twelve columns">
+          <tr>
+            <td id="actividad">
+                <div class="color1 color-check"></div>
+                <div class="color2 color-check"></div>
+                <div class="color3 color-check"></div>
+                <div class="color4 color-check"></div>
+                <div class="color5 color-check"></div>
+                <input type="hidden" id="js-color-selected" value="" />
+            </td>
+            <td class="comida">Desayuno:</td>
+            <td class="comida"><input type="radio" value="desayuno" name="group1" class="group1"/></td>
+            <td class="comida">Comida:</td>
+            <td class="comida"><input type="radio" value="comida" name="group1" class="group1"/></td>
+            <td class="comida">Descripcion:</td>
+            <td class="comida"><textarea></textarea></td>
+            <td class="clase"> Especifique un nombre para la clase: <td/>
+            <td class="clase"> <input type="text" id="js-nombre-de-clase" /> </td>
+          </tr>
+        </table>
 
         <input type="button" value="Agregar actividad" id="agregaActividad"/>
       </form>
