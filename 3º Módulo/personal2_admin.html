@@ -26,17 +26,17 @@
   
   <script>
     function saveCV(){
-      var nombre = document.datos.nombre.value;
-      var apellido = document.datos.apellido.value;
-      var direccion = document.datos.direccion.value;
+      var primaria = document.datos.primaria.value;
+      var secundaria = document.datos.secundaria.value;
+      var preparatoria = document.datos.preparatoria.value;
       var msg = '';
 
-      if(nombre == '')
-      msg+= 'Es necesario ingresar un nombre.<br />';
-      if(apellido == '')
-      msg+= 'Es necesario ingresar un apellido.<br />';
-      if(direccion == '')
-      msg+= 'Es necesario ingresar una dirección.<br />';
+      if(primaria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de primaria.<br />';
+      if(secundaria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de secundaria.<br />';
+      if(preparatoria == '')
+      msg+= 'Porfavor ingrese los datos de estudios de preparatoria.<br />';
 
       if(msg == ''){
         alert('Datos salvados correctamente.');
@@ -50,6 +50,35 @@
     }
 
     $(document).ready(function(){
+      $("#addCurse").click(function(){
+        console.log("hola");
+        var nombre = document.datos.curso.value;
+        var inicio = document.datos.curso_a.value;
+        var fin = document.datos.curso_b.value;
+
+        if(nombre != '' && inicio != '' && fin != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var course ="<div>";
+          course+= nombre + ' (' + inicio + '-' + fin + ')<br />'+boton;
+          course+="</div>";
+          $("#cursos").append(course);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.curso.value = '';
+          document.datos.curso_a.value = '';
+          document.datos.curso_b.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $(".delete").click(function(){
+        $(this).parent().remove();
+      });
+
       $("#featured").orbit();
     });
    </script> 
@@ -93,8 +122,8 @@
       <div class="row">
         <div class="twelve columns">
           <p>En este apartado se tiene como finalidad crear brindar información sobre nuestro personal.</p>
-          <a href="#" style="margin-left: 15px;"> Datos personales</a>
-          <a href="personal2_admin.html" style="margin-left: 15px;"> Datos academicos</a>
+          <a href="personal_admin.html" style="margin-left: 15px;"> Datos personales</a>
+          <a href="#" style="margin-left: 15px;"> Datos academicos</a>
           <a href="personal3_admin.html" style="margin-left: 15px;"> Datos laborales</a>
           <br />
           <br />
@@ -105,25 +134,50 @@
           <form name="datos">
             <table>
               <tr>
-                <td><label><h5>Datos personales:</h5></label></td>
+                <td><label><h5>Datos académicos:</h5></label></td>
                 <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
               </tr>
               <tr>
-                <td>Nombre:</td><td colspan="14"><input type="text" name="nombre"></td>
+                <td>Estudios de primaria:</td><td colspan="14"><input type="text" name="primaria"></td>
               </tr>
               <tr>
-                <td>Apellido:</td><td colspan="14"><input type="text" name="apellido"></td>
+                <td>Del: <input type="text" name="primaria_a"></td><td>Al: <input type="text" name="primaria_b"></td>
               </tr>
               <tr>
-                <td>Dirección:</td><td colspan="14"><input type="text" name="direccion"></td>
+                <td>Estudios de secundaria:</td><td colspan="14"><input type="text" name="secundaria"></td>
               </tr>
               <tr>
-                <td>Correo electrónico:</td><td colspan="14"><input type="text" name="e-mail"></td>
+                <td>Del: <input type="text" name="secundaria_a"></td><td>Al: <input type="text" name="secundaria_b"></td>
               </tr>
               <tr>
-                <td>Teléfono:</td><td colspan="5"><input type="text" name="telefono"></td>
+                <td>Estudios de preparatoria:</td><td colspan="14"><input type="text" name="preparatoria"></td>
               </tr>
               <tr>
+                <td>Del: <input type="text" name="preparatoria_a"></td><td>Al: <input type="text" name="preparatoria_b"></td>
+              </tr>
+              <tr>
+                <td>Estudios superiores:</td><td colspan="14"><input type="text" name="superiores"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="superiores_a"></td><td>Al: <input type="text" name="superiores_b"></td>
+              </tr>
+              <tr>
+                <td> <label><h5>Cursos adicionales</h5></label></td>
+              </tr>
+              <tr>
+                <td colspan="15">
+                  <div id="cursos">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Nombre del curso:</td><td colspan="14"><input type="text" name="curso"></td>
+              </tr>
+              <tr>
+                <td>Del: <input type="text" name="curso_a"></td><td>Al: <input type="text" name="curso_b"></td>
+              </tr>
+              <tr>
+                <td><input type="button" value="Agregar curso" id="addCurse"/> </td>
               </tr>
             </table>
             <input type="button" value="Guardar curriculum" onclick="saveCV()"/>

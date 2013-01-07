@@ -26,30 +26,63 @@
   
   <script>
     function saveCV(){
-      var nombre = document.datos.nombre.value;
-      var apellido = document.datos.apellido.value;
-      var direccion = document.datos.direccion.value;
-      var msg = '';
-
-      if(nombre == '')
-      msg+= 'Es necesario ingresar un nombre.<br />';
-      if(apellido == '')
-      msg+= 'Es necesario ingresar un apellido.<br />';
-      if(direccion == '')
-      msg+= 'Es necesario ingresar una dirección.<br />';
-
-      if(msg == ''){
-        alert('Datos salvados correctamente.');
-        window.location.reload();
-        } else {
-        var div = document.createElement('div');
-        div.className = 'alert-box alert';
-        div.innerHTML = msg;
-        $('#message').append(div);
-      }
+      alert('Datos salvados correctamente.');
+      window.location.reload();
     }
 
     $(document).ready(function(){
+      $('#addJob').click(function(){
+        var empresa = document.datos.empresa.value;
+        var puesto = document.datos.puesto.value;
+        var inicio = document.datos.trabajo_a.value;
+        var fin = document.datos.trabajo_b.value;
+
+        if(empresa != '' && puesto != '' && inicio != '' && fin != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var job ="<div>";
+            job+= puesto + ' en ' + empresa + ' (' + inicio + '-' + fin + ').<br />' + boton;
+          job+="</div>";
+          $('#trabajo').append(job);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.empresa.value = '';
+          document.datos.puesto.value = '';
+          document.datos.trabajo_a.value = '';
+          document.datos.trabajo_b.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $('#addRecon').click(function(){
+        var nombre = document.datos.reconocimiento.value;
+        var ano = document.datos.ano.value;
+
+        if(nombre != '' && ano != ''){
+          var boton = '<input type="button" class="delete" value="Borrar">';
+          var recon ="<div>";
+          recon+= nombre + ' (' + ano + ').<br />' + boton;
+          recon+="</div>";
+          $('#reconocimientos').append(recon);
+
+          $(".delete").click(function(){
+            $(this).parent().remove();
+          });
+
+          document.datos.reconocimiento.value = '';
+          document.datos.ano.value = '';
+          } else {
+          alert('Es necesario llenar todos los campos.');
+        }
+      });
+
+      $(".delete").click(function(){
+        $(this).parent().remove();
+      });
+
       $("#featured").orbit();
     });
    </script> 
@@ -93,9 +126,9 @@
       <div class="row">
         <div class="twelve columns">
           <p>En este apartado se tiene como finalidad crear brindar información sobre nuestro personal.</p>
-          <a href="#" style="margin-left: 15px;"> Datos personales</a>
-          <a href="personal2_admin.html" style="margin-left: 15px;"> Datos academicos</a>
-          <a href="personal3_admin.html" style="margin-left: 15px;"> Datos laborales</a>
+          <a href="personal_admin.html" style="margin-left: 15px;"> Datos personales</a>
+          <a href="personal2_admin.htm#" style="margin-left: 15px;"> Datos academicos</a>
+          <a href="#" style="margin-left: 15px;"> Datos laborales</a>
           <br />
           <br />
         </div>
@@ -105,25 +138,47 @@
           <form name="datos">
             <table>
               <tr>
-                <td><label><h5>Datos personales:</h5></label></td>
+                <td><label><h5>Datos profesionales:</h5></label></td>
                 <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
               </tr>
               <tr>
-                <td>Nombre:</td><td colspan="14"><input type="text" name="nombre"></td>
+                <td><label>Trabajos anteriores</label></td>
               </tr>
               <tr>
-                <td>Apellido:</td><td colspan="14"><input type="text" name="apellido"></td>
+                <td colspan="15">
+                  <div id="trabajo">
+                  </div>
+                </td>
               </tr>
               <tr>
-                <td>Dirección:</td><td colspan="14"><input type="text" name="direccion"></td>
+                <td>Empresa:</td><td colspan="14"><input type="text" name="empresa"></td>
               </tr>
               <tr>
-                <td>Correo electrónico:</td><td colspan="14"><input type="text" name="e-mail"></td>
+                <td>Puesto:</td><td colspan="14"><input type="text" name="puesto"></td>
               </tr>
               <tr>
-                <td>Teléfono:</td><td colspan="5"><input type="text" name="telefono"></td>
+                <td>Del: <input type="text" name="trabajo_a"></td><td>Al: <input type="text" name="trabajo_b"></td>
               </tr>
               <tr>
+                <td><input type="button" value="Agregar trabajo" id="addJob"/></td>
+              </tr>
+              <tr>
+                <td><label>Reconocimientos</label></td>
+              </tr>
+              <tr>
+                <td colspan="15">
+                  <div id="reconocimientos">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Reconocimiento:</td><td colspan="14"><input type="text" name="reconocimiento"></td>
+              </tr>
+              <tr>
+                <td>Año:</td><td><input type="text" name="ano"></td>
+              </tr>
+              <tr>
+                <td><input type="button" value="Agregar reconocimiento" id="addRecon"/></td>
               </tr>
             </table>
             <input type="button" value="Guardar curriculum" onclick="saveCV()"/>
