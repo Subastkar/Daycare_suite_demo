@@ -96,3 +96,63 @@ nav>ul li a:hover{
   background: gray;
   color: white;
 }
+
+.color1{
+  background: #FBC0C0;
+  border: 1px solid #B2B2B2;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  float:left;
+}
+.color2{
+  background: #E0C0FB;
+  border: 1px solid #B2B2B2;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  float:left;
+}
+.color3{
+  background: #C0D4FB;
+  border: 1px solid #B2B2B2;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  float:left;
+}
+.color4{
+  background: #C0FBEC;
+  border: 1px solid #B2B2B2;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  float:left;
+}
+.color5{
+  background: #F2FBC0;
+  border: 1px solid #B2B2B2;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  float:left;
+}
+.color-selected{
+  height: 30px;
+  width: 60px;
+}
+
+.comida{
+  display: none;
+}
+
+.clase{
+  display: none;
+}
+
+#hour{
+  font-size: 18px;
+}
+#activity{
+  font-size: 18px;
+}
